@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 const Newsletter = () => {
+  const [handlePersonalData, setHandlePersonalData] = useState(false);
+  const toggleHandlePersonalData = (event: ChangeEvent<HTMLInputElement>) => {
+    setHandlePersonalData(event.target.checked);
+  };
+
   return (
-    <form>
+    <form action='/api/signup-form' method='post'>
       <div className='flex justify-center items-center flex-col'>
         <div>
           <p className='text-center text-2xl font-semibold'>
@@ -19,15 +24,17 @@ const Newsletter = () => {
             <div className='flex flex-col'>
               <input
                 className='bg-gray-100 p-2 m-2 w-full'
-                id='first-name'
+                id='fName'
                 type='text'
+                name='fName'
                 required
                 placeholder='FÖRNAMN'
               />
               <input
                 className='bg-gray-100 p-2 m-2 w-full'
-                id='last-name'
+                id='lName'
                 type='text'
+                name='lName'
                 required
                 placeholder='EFTERNAMN'
               />
@@ -35,6 +42,7 @@ const Newsletter = () => {
                 className='bg-gray-100 p-2 m-2 w-full'
                 id='email'
                 type='email'
+                name='email'
                 required
                 placeholder='E-POSTADRESS'
               />
@@ -47,7 +55,14 @@ const Newsletter = () => {
               <div>
                 <div className='mt-2'>
                   <label className='inline-flex items-center'>
-                    <input type='checkbox' className='w-6 h-6' />
+                    <input
+                      checked={handlePersonalData}
+                      onChange={toggleHandlePersonalData}
+                      id='handlePersonalData'
+                      type='checkbox'
+                      name='handlePersonalData'
+                      className='w-6 h-6'
+                    />
                     <p className='ml-3 text-neutral-800 opacity-80 font-light'>
                       Jag accepterar hantering av personuppgifter.
                     </p>
@@ -57,7 +72,10 @@ const Newsletter = () => {
             </div>
             <div className='w-1/3 h-64'>
               <div className='flex justify-end'>
-                <button className='bg-orange-500 opacity-90 font-normal hover:bg-white text-white hover:text-black py-2 px-16'>
+                <button
+                  type='submit'
+                  className='bg-orange-500 opacity-90 font-normal hover:bg-white text-white hover:text-black py-2 px-16'
+                >
                   Sign Up
                 </button>
               </div>
