@@ -1,19 +1,27 @@
 export default function handler(req: any, res: any) {
-  // Get data submitted in request's body.
-  const body = req.body;
+  if (req.method === 'POST') {
+    const body = req.body;
 
-  // Optional logging to see the responses
-  // in the command line where next.js app is running.
-  console.log('body: ', body);
+    if (!body.firstName) {
+      return res.status(403).json({ msg: 'Förnamn är obligatoriskt.' });
+    }
+    if (!body.lastName) {
+      return res.status(403).json({ msg: 'Efternamn är obligatoriskt.' });
+    }
+    if (validateEmail(body.email)) {
+      return res.status(403).json({ msg: 'Ange en giltig e-postadress.' });
+    }
 
-  // Guard clause checks for first and last name,
-  // and returns early if they are not found
-  if (!body.fName || !body.lName) {
-    // Sends a HTTP bad request error code
-    return res.status(400).json({ data: 'First or last name not found' });
+    return res.status(200).json({ msg: 'Tack för din prenumeration!' });
   }
-
-  // Found the name.
-  // Sends a HTTP success code
-  res.status(200).json({ data: `${body.fName} ${body.lName}` });
+  res.status(500).json({ msg: 'This needs to be a post request' });
 }
+
+const validateEmail = (email: string) => {
+  const validRegex =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  if (email.match(validRegex)) {
+    return false;
+  }
+  return true;
+};
