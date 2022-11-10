@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Category } from '../interfaces';
 import CategoryItem from './CategoryItem';
 
-const Category = () => {
+const Category: FC = () => {
   return (
     <div className='lg:container  grid grid-cols-4 lg:gap-2 gap-1 mx-auto'>
       {categories.map((category: Category) => (

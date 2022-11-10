@@ -1,9 +1,11 @@
-import React, { ChangeEvent, useState } from 'react';
-import { SignupForm } from '../interfaces';
+import React, { ChangeEvent, FC, useState } from 'react';
+import { SignupFormValues } from '../interfaces';
+import SignupForm from './SignupForm';
 import axios from 'axios';
+import PersonalDataCheckbox from './PersonalDataCheckbox';
 
-const Newsletter = () => {
-  const [signupForm, setSignupForm] = useState<SignupForm>({
+const Newsletter: FC = () => {
+  const [signupForm, setSignupForm] = useState<SignupFormValues>({
     fName: '',
     lName: '',
     email: '',
@@ -61,7 +63,7 @@ const Newsletter = () => {
     setSignupForm({ ...signupForm, [field]: event.target.value });
   };
 
-  const handleSubmitForm = async (values: SignupForm) => {
+  const handleSubmitForm = async (values: SignupFormValues) => {
     const { fName, lName, email, handlePersonalData } = values;
 
     const payload = {
@@ -97,69 +99,18 @@ const Newsletter = () => {
           Nyhetsbrev <br /> Få 10% På Ditt Första Köp
         </p>
       </div>
-      <div className='lg:container flex justify-center items-center lg:flex-row mt-8 flex-col w-full'>
-        <img
-          className='lg:w-1/3 h-64 object-cover'
-          src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80'
-          alt='Image'
-        />
-        <div className='bg-white lg:flex justify-center items-center lg:w-1/3 w-full lg:h-64'>
-          <div className='flex flex-col lg:full'>
-            <input
-              className='bg-gray-100 p-3 m-2 lg:w-full text-xs font-semibold'
-              value={signupForm.fName}
-              name='fName'
-              onChange={handleInputChange}
-              required
-              placeholder='FÖRNAMN'
-            />
-            <input
-              className='bg-gray-100 p-3 m-2 lg:w-full text-xs font-semibold'
-              value={signupForm.lName}
-              name='lName'
-              onChange={handleInputChange}
-              required
-              placeholder='EFTERNAMN'
-            />
-            <input
-              className='bg-gray-100 p-3 m-2 lg:w-full text-xs font-semibold'
-              value={signupForm.email}
-              name='email'
-              onChange={handleInputChange}
-              required
-              placeholder='E-POSTADRESS'
-            />
-            {errorMessage && (
-              <p className='ml-2 text-red-500 text-xs italic'>{errorMessage}</p>
-            )}
-            {successMessage && (
-              <p className='lg:ml-2 text-green-500 text-xs italic text-center w-full'>
-                {successMessage}
-              </p>
-            )}
-          </div>
-        </div>
-      </div>
+      <SignupForm
+        signupForm={signupForm}
+        onInputChange={handleInputChange}
+        errorMessage={errorMessage}
+        successMessage={successMessage}
+      />
       <div className='lg:w-full mt-4'>
         <div className='lg:container lg:flex justify-center'>
-          <div className='lg:w-1/3 lg:h-64'>
-            <div>
-              <div className='mt-2'>
-                <label className='inline-flex items-center'>
-                  <input
-                    checked={signupForm.handlePersonalData}
-                    onChange={handleInputChange}
-                    name='handlePersonalData'
-                    type='checkbox'
-                    className='w-6 h-6'
-                  />
-                  <p className='ml-3 text-neutral-800 opacity-80 font-light text-xs'>
-                    Jag accepterar hantering av personuppgifter.
-                  </p>
-                </label>
-              </div>
-            </div>
-          </div>
+          <PersonalDataCheckbox
+            handlePersonalData={signupForm.handlePersonalData}
+            onInputChange={handleInputChange}
+          />
           <div className='lg:w-1/3 lg:h-64 mb-8'>
             <div className='flex lg:justify-end w-full'>
               <button
