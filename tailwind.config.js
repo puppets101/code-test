@@ -10,6 +10,11 @@ module.exports = {
       center: true,
       padding: '2rem',
     },
+    theme: {
+      screens: {
+        lg: '1200px',
+      },
+    },
   },
   plugins: [],
 };

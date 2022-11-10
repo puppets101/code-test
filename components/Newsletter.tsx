@@ -14,7 +14,7 @@ const Newsletter = () => {
     email: '',
     handlePersonalData: false,
   });
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -103,13 +103,13 @@ const Newsletter = () => {
           Nyhetsbrev <br /> Få 10% På Ditt Första Köp
         </p>
       </div>
-      <div className='container flex justify-center items-center flex-row mt-8 w-full'>
+      <div className='lg:container flex justify-center items-center lg:flex-row flex-col mt-8 w-full'>
         <img
-          className='w-1/3 h-64 object-cover'
+          className='lg:w-1/3 h-64 object-cover'
           src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80'
           alt='Image'
         />
-        <div className='bg-white flex justify-center items-center w-1/3 h-64'>
+        <div className='bg-white lg:flex justify-center items-center lg:w-1/3 w-full lg:h-64'>
           <div className='flex flex-col'>
             <input
               className='bg-gray-100 p-2 m-2 w-full'
@@ -146,9 +146,9 @@ const Newsletter = () => {
           </div>
         </div>
       </div>
-      <div className='w-full mt-4'>
-        <div className='container flex justify-center'>
-          <div className='w-1/3 h-64'>
+      <div className='lg:w-full my-4'>
+        <div className='lg:container lg:flex justify-center'>
+          <div className='lg:w-1/3 lg:h-64'>
             <div>
               <div className='mt-2'>
                 <label className='inline-flex items-center'>
@@ -159,21 +159,21 @@ const Newsletter = () => {
                     type='checkbox'
                     className='w-6 h-6'
                   />
-                  <p className='ml-3 text-neutral-800 opacity-80 font-light'>
+                  <p className='ml-3 text-neutral-800 opacity-80 font-light text-xs'>
                     Jag accepterar hantering av personuppgifter.
                   </p>
                 </label>
               </div>
             </div>
           </div>
-          <div className='w-1/3 h-64'>
-            <div className='flex justify-end'>
+          <div className='lg:w-1/3 lg:h-64 mb-8'>
+            <div className='flex lg:justify-end w-full'>
               <button
                 onClick={handleSubmitForm}
                 className={`${
                   !error
-                    ? 'bg-orange-500 opacity-90 font-normal hover:bg-white text-white hover:text-black py-2 px-16'
-                    : 'bg-gray-300 opacity-90 font-normal text-white py-2 px-16'
+                    ? 'bg-orange-500 opacity-90 font-normal hover:bg-white hover:border-2 hover:border-black text-white hover:text-black py-2 lg:px-16 lg:w-1/2 w-full'
+                    : 'bg-gray-300 opacity-90 font-normal text-white py-2 px-16 w-full'
                 } `}
               >
                 Sign Up
