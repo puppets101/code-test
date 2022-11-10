@@ -4,10 +4,16 @@ import Layout from '../components/Layout';
 import Newsletter from '../components/Newsletter';
 
 const IndexPage = () => (
-  <Layout>
-    <Category />
-    <Newsletter />
-  </Layout>
+  <>
+    <Head>
+      <title>Varg Nyhetsbrev</title>
+      <meta name='keywords' content='outdoor, adventure, newsletter' />
+    </Head>
+    <Layout>
+      <Category />
+      <Newsletter />
+    </Layout>
+  </>
 );
 
 export default IndexPage;
