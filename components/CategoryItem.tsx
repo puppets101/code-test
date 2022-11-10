@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import Category from './Category';
+import { Category } from '../interfaces';
 
 type CategoryItemProps = {
   category: Category;
 };
 const CategoryItem = ({ category }: CategoryItemProps) => {
   const [showBorder, setShowBorder] = useState(false);
-  console.log(showBorder);
-
   return (
     <div
       className='w-full rounded py-8 lg:py-16'

@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
+import { SignupForm } from '../interfaces';
 import axios from 'axios';
 
-type SignupForm = {
-  fName: string;
-  lName: string;
-  email: string;
-  handlePersonalData: boolean;
-};
 const Newsletter = () => {
   const [signupForm, setSignupForm] = useState<SignupForm>({
     fName: '',
