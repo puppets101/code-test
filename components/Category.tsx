@@ -42,7 +42,7 @@ const categories: Category[] = [
   },
   {
     id: '4',
-    label: 'OM VARG',
+    label: 'OM OSS',
     imageUrl:
       'https://images.unsplash.com/photo-1470246973918-29a93221c455?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     description: 'Kategori',
