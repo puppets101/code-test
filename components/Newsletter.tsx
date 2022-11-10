@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { SignupForm } from '../interfaces';
 import axios from 'axios';
 
@@ -41,7 +41,7 @@ const Newsletter = () => {
     }
   };
 
-  const handleInputChange = (event: any) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setErrorMessage('');
     validateForm();
     const field = event.target.name;
@@ -61,9 +61,8 @@ const Newsletter = () => {
     setSignupForm({ ...signupForm, [field]: event.target.value });
   };
 
-  const handleSubmitForm = async (event: any) => {
-    event.preventDefault();
-    const { fName, lName, email, handlePersonalData } = signupForm;
+  const handleSubmitForm = async (values: SignupForm) => {
+    const { fName, lName, email, handlePersonalData } = values;
 
     const payload = {
       firstName: fName,
@@ -164,7 +163,7 @@ const Newsletter = () => {
           <div className='lg:w-1/3 lg:h-64 mb-8'>
             <div className='flex lg:justify-end w-full'>
               <button
-                onClick={handleSubmitForm}
+                onClick={() => handleSubmitForm(signupForm)}
                 className={`${
                   !error
                     ? 'bg-orange-500 opacity-90 font-normal hover:bg-white hover:border-2 hover:border-black text-white hover:text-black py-2 w-full lg:w-1/2'
