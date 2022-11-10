@@ -98,21 +98,21 @@ const Newsletter = () => {
 
   return (
     <div className='flex justify-center items-center flex-col'>
-      <div>
+      <div className='lg:mt-4'>
         <p className='text-center text-2xl font-semibold'>
           Nyhetsbrev <br /> Få 10% På Ditt Första Köp
         </p>
       </div>
-      <div className='lg:container flex justify-center items-center lg:flex-row flex-col mt-8 w-full'>
+      <div className='lg:container flex justify-center items-center lg:flex-row mt-8 flex-col w-full'>
         <img
           className='lg:w-1/3 h-64 object-cover'
           src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80'
           alt='Image'
         />
         <div className='bg-white lg:flex justify-center items-center lg:w-1/3 w-full lg:h-64'>
-          <div className='flex flex-col'>
+          <div className='flex flex-col lg:full'>
             <input
-              className='bg-gray-100 p-2 m-2 w-full'
+              className='bg-gray-100 p-3 m-2 lg:w-full text-xs font-semibold'
               value={signupForm.fName}
               name='fName'
               onChange={handleInputChange}
@@ -120,7 +120,7 @@ const Newsletter = () => {
               placeholder='FÖRNAMN'
             />
             <input
-              className='bg-gray-100 p-2 m-2 w-full'
+              className='bg-gray-100 p-3 m-2 lg:w-full text-xs font-semibold'
               value={signupForm.lName}
               name='lName'
               onChange={handleInputChange}
@@ -128,7 +128,7 @@ const Newsletter = () => {
               placeholder='EFTERNAMN'
             />
             <input
-              className='bg-gray-100 p-2 m-2 w-full'
+              className='bg-gray-100 p-3 m-2 lg:w-full text-xs font-semibold'
               value={signupForm.email}
               name='email'
               onChange={handleInputChange}
@@ -139,14 +139,14 @@ const Newsletter = () => {
               <p className='ml-2 text-red-500 text-xs italic'>{errorMessage}</p>
             )}
             {successMessage && (
-              <p className='ml-2 text-green-500 text-xs italic'>
+              <p className='lg:ml-2 text-green-500 text-xs italic text-center w-full'>
                 {successMessage}
               </p>
             )}
           </div>
         </div>
       </div>
-      <div className='lg:w-full my-4'>
+      <div className='lg:w-full mt-4'>
         <div className='lg:container lg:flex justify-center'>
           <div className='lg:w-1/3 lg:h-64'>
             <div>
@@ -172,8 +172,8 @@ const Newsletter = () => {
                 onClick={handleSubmitForm}
                 className={`${
                   !error
-                    ? 'bg-orange-500 opacity-90 font-normal hover:bg-white hover:border-2 hover:border-black text-white hover:text-black py-2 lg:px-16 lg:w-1/2 w-full'
-                    : 'bg-gray-300 opacity-90 font-normal text-white py-2 px-16 w-full'
+                    ? 'bg-orange-500 opacity-90 font-normal hover:bg-white hover:border-2 hover:border-black text-white hover:text-black py-2 w-full lg:w-1/2'
+                    : 'bg-gray-300 opacity-90 font-normal text-white py-2 w-full lg:w-1/2'
                 } `}
               >
                 Sign Up

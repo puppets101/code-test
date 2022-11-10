@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => (
-  <div className='sm:container px-1 sm:bg-stone-100 w-full h-full'>
+  <div className='sm:container px-1 lg:bg-[#FBF9FA] w-full h-full'>
     {children}
   </div>
 );
